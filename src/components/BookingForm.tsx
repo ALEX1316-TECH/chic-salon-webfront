@@ -56,7 +56,7 @@ export const BookingForm = () => {
 
 Thank you!`;
 
-    const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/919007195231?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
