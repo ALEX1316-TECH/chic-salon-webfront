@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Beauty - Premium Salon & Spa</title>
+    <meta name="description" content="Experience luxury beauty services in our modern salon. Expert stylists, premium products, and personalized care for every client.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'hsl(35 100% 98%)',
+                        foreground: 'hsl(25 15% 15%)',
+                        card: 'hsl(0 0% 100%)',
+                        'card-foreground': 'hsl(25 15% 15%)',
+                        primary: 'hsl(15 90% 65%)',
+                        'primary-foreground': 'hsl(0 0% 100%)',
+                        secondary: 'hsl(35 50% 95%)',
+                        'secondary-foreground': 'hsl(25 15% 15%)',
+                        muted: 'hsl(35 20% 92%)',
+                        'muted-foreground': 'hsl(25 8% 45%)',
+                        border: 'hsl(35 30% 88%)',
+                        'rose-gold': 'hsl(15 90% 65%)',
+                        'rose-gold-light': 'hsl(15 70% 80%)',
+                        cream: 'hsl(35 100% 98%)',
+                        'warm-gold': 'hsl(45 100% 75%)',
+                        charcoal: 'hsl(25 15% 15%)'
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, hsl(15 90% 65%), hsl(45 100% 75%))',
+                        'gradient-hero': 'linear-gradient(135deg, hsl(35 100% 98%), hsl(15 70% 80%))',
+                        'gradient-card': 'linear-gradient(135deg, hsl(35 100% 98%), hsl(35 50% 95%))'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -4px hsl(15 90% 65% / 0.2)',
+                        'card': '0 8px 32px -8px hsl(15 90% 65% / 0.15)',
+                        'elegant': '0 12px 40px -12px hsl(15 90% 65% / 0.25)'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-in-right': 'slideInRight 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .carousel-container {
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .scroll-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50 shadow-soft">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
+                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 14l4 4 8-8"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-foreground">Bella Beauty</h1>
+                        <p class="text-sm text-muted-foreground">Premium Salon & Spa</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#services" class="text-foreground hover:text-primary transition-colors">Services</a>
+                    <a href="#booking" class="text-foreground hover:text-primary transition-colors">Book Now</a>
+                    <a href="#contact" class="text-foreground hover:text-primary transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-hero">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-5xl md:text-6xl font-bold text-foreground mb-6">
+                    Where Beauty
+                    <span class="text-primary block">Meets Excellence</span>
+                </h2>
+                <p class="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+                    Experience luxury beauty services in our modern salon. Expert stylists, premium products, and personalized care for every client.
+                </p>
+                <button 
+                    onclick="scrollToSection('booking')"
+                    class="inline-flex items-center px-8 py-3 bg-gradient-primary text-white font-semibold rounded-lg hover:opacity-90 transition-opacity shadow-soft"
+                >
+                    <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z"></path>
+                    </svg>
+                    Book Your Appointment
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Carousel -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="animate-on-scroll">
+                <div id="carousel" class="relative w-full h-96 md:h-[500px] overflow-hidden rounded-2xl shadow-elegant">
+                    <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out h-full carousel-container">
+                        <div class="w-full h-full flex-shrink-0 relative">
+                            <img src="src/assets/salon-interior.jpg" alt="Modern salon interior" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        <div class="w-full h-full flex-shrink-0 relative">
+                            <img src="src/assets/hair-styling.jpg" alt="Professional hair styling" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        <div class="w-full h-full flex-shrink-0 relative">
+                            <img src="src/assets/nail-treatment.jpg" alt="Nail treatment service" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        <div class="w-full h-full flex-shrink-0 relative">
+                            <img src="src/assets/spa-massage.jpg" alt="Relaxing spa massage" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="previousSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white border border-white/50 shadow-soft p-2 rounded-lg">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white border border-white/50 shadow-soft p-2 rounded-lg">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                        <button onclick="goToSlide(0)" class="carousel-dot w-3 h-3 rounded-full transition-all duration-300 bg-white scale-110"></button>
+                        <button onclick="goToSlide(1)" class="carousel-dot w-3 h-3 rounded-full transition-all duration-300 bg-white/50"></button>
+                        <button onclick="goToSlide(2)" class="carousel-dot w-3 h-3 rounded-full transition-all duration-300 bg-white/50"></button>
+                        <button onclick="goToSlide(3)" class="carousel-dot w-3 h-3 rounded-full transition-all duration-300 bg-white/50"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-secondary/30">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Our Services</h2>
+                <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    Discover our comprehensive range of beauty and wellness services, each designed to enhance your natural beauty.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+                <!-- Services will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Book Your Appointment</h2>
+                <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    Ready to transform your look? Book your appointment now and let our expert team take care of you.
+                </p>
+            </div>
+            <div class="animate-on-scroll">
+                <div class="max-w-lg mx-auto shadow-elegant bg-gradient-card rounded-lg">
+                    <div class="text-center p-6 border-b">
+                        <h3 class="text-2xl font-bold text-foreground">Book Your Appointment</h3>
+                        <p class="text-muted-foreground">Fill out the form below and we'll contact you via WhatsApp</p>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <form id="booking-form" class="space-y-4">
+                            <div class="space-y-2">
+                                <label for="name" class="block text-sm font-medium text-foreground">Full Name</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name"
+                                    class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="phone" class="block text-sm font-medium text-foreground">Phone Number</label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone"
+                                    class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                                    placeholder="Enter your phone number"
+                                    required
+                                >
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="service" class="block text-sm font-medium text-foreground">Select Service</label>
+                                <select 
+                                    id="service" 
+                                    name="service"
+                                    class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                                    required
+                                >
+                                    <option value="">Choose a service</option>
+                                    <option value="Hair Cut & Style">Hair Cut & Style</option>
+                                    <option value="Hair Coloring">Hair Coloring</option>
+                                    <option value="Highlights">Highlights</option>
+                                    <option value="Manicure">Manicure</option>
+                                    <option value="Pedicure">Pedicure</option>
+                                    <option value="Facial Treatment">Facial Treatment</option>
+                                    <option value="Massage Therapy">Massage Therapy</option>
+                                    <option value="Eyebrow Shaping">Eyebrow Shaping</option>
+                                    <option value="Hair Treatment">Hair Treatment</option>
+                                    <option value="Bridal Package">Bridal Package</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="date" class="block text-sm font-medium text-foreground">Select Date</label>
+                                <input 
+                                    type="date" 
+                                    id="date" 
+                                    name="date"
+                                    class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                                    required
+                                >
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="time" class="block text-sm font-medium text-foreground">Select Time</label>
+                                <select 
+                                    id="time" 
+                                    name="time"
+                                    class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                                    required
+                                >
+                                    <option value="">Choose a time</option>
+                                    <option value="9:00 AM">9:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                    <option value="1:00 PM">1:00 PM</option>
+                                    <option value="2:00 PM">2:00 PM</option>
+                                    <option value="3:00 PM">3:00 PM</option>
+                                    <option value="4:00 PM">4:00 PM</option>
+                                    <option value="5:00 PM">5:00 PM</option>
+                                    <option value="6:00 PM">6:00 PM</option>
+                                </select>
+                            </div>
+
+                            <button 
+                                type="submit" 
+                                class="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-primary text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
+                            >
+                                <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                                Book via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Social Section -->
+    <section id="contact" class="py-20 bg-secondary/30">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl font-bold text-foreground mb-8">Get in Touch</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground">Address</h3>
+                                <p class="text-muted-foreground">123 Beauty Lane, Downtown City, ST 12345</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground">Phone</h3>
+                                <p class="text-muted-foreground">(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground">Email</h3>
+                                <p class="text-muted-foreground">info@bellabeauty.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground">Hours</h3>
+                                <p class="text-muted-foreground">Mon-Sat: 9AM-7PM<br>Sun: 10AM-5PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <div class="bg-gradient-card shadow-elegant rounded-lg">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-foreground mb-6">Follow Us</h3>
+                            <p class="text-muted-foreground mb-6">
+                                Stay connected with us on social media for the latest updates, beauty tips, and special offers.
+                            </p>
+                            <div class="flex space-x-4">
+                                <button 
+                                    onclick="window.open('https://instagram.com', '_blank')"
+                                    class="p-3 border border-border rounded-lg hover:bg-primary hover:text-white transition-colors"
+                                >
+                                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.244c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.405c-.438 0-.807-.369-.807-.807 0-.438.369-.807.807-.807s.807.369.807.807c0 .438-.369.807-.807.807zm-3.756 10.186c-2.229 0-4.036-1.807-4.036-4.036s1.807-4.036 4.036-4.036 4.036 1.807 4.036 4.036-1.807 4.036-4.036 4.036z"/>
+                                    </svg>
+                                </button>
+                                <button 
+                                    onclick="window.open('https://facebook.com', '_blank')"
+                                    class="p-3 border border-border rounded-lg hover:bg-primary hover:text-white transition-colors"
+                                >
+                                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </button>
+                                <button 
+                                    onclick="window.open('https://twitter.com', '_blank')"
+                                    class="p-3 border border-border rounded-lg hover:bg-primary hover:text-white transition-colors"
+                                >
+                                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-charcoal text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
+                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 14l4 4 8-8"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Bella Beauty</h3>
+                        <p class="text-sm text-gray-300">Premium Salon & Spa</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-4">
+                    &copy; 2024 Bella Beauty. All rights reserved.
+                </p>
+                <p class="text-sm text-gray-400">
+                    Crafted with love for beautiful transformations
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button 
+        id="scroll-to-top"
+        onclick="scrollToTop()"
+        class="scroll-to-top fixed bottom-8 right-8 p-3 bg-gradient-primary text-white rounded-lg shadow-elegant animate-float"
+    >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Services data
+        const services = [
+            {
+                title: 'Hair Cut & Style',
+                description: 'Professional haircuts and styling for all hair types. Includes wash, cut, and blow-dry.',
+                price: '$45',
+                duration: '60 min'
+            },
+            {
+                title: 'Hair Coloring',
+                description: 'Full hair coloring service with premium products. Consultation included.',
+                price: '$85',
+                duration: '120 min'
+            },
+            {
+                title: 'Highlights',
+                description: 'Beautiful highlights to add dimension and brightness to your hair.',
+                price: '$95',
+                duration: '150 min'
+            },
+            {
+                title: 'Manicure',
+                description: 'Complete nail care including cuticle treatment, shaping, and polish.',
+                price: '$35',
+                duration: '45 min'
+            },
+            {
+                title: 'Pedicure',
+                description: 'Relaxing foot treatment with exfoliation, massage, and nail care.',
+                price: '$45',
+                duration: '60 min'
+            },
+            {
+                title: 'Facial Treatment',
+                description: 'Deep cleansing facial with customized treatment for your skin type.',
+                price: '$75',
+                duration: '75 min'
+            },
+            {
+                title: 'Massage Therapy',
+                description: 'Relaxing full-body massage to relieve stress and tension.',
+                price: '$90',
+                duration: '90 min'
+            },
+            {
+                title: 'Eyebrow Shaping',
+                description: 'Professional eyebrow shaping and tinting for perfect brows.',
+                price: '$25',
+                duration: '30 min'
+            },
+            {
+                title: 'Hair Treatment',
+                description: 'Nourishing hair treatment to restore shine and health.',
+                price: '$55',
+                duration: '45 min'
+            },
+            {
+                title: 'Bridal Package',
+                description: 'Complete bridal beauty package including hair, makeup, and nails.',
+                price: '$250',
+                duration: '240 min'
+            }
+        ];
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        function updateCarousel() {
+            const track = document.getElementById('carousel-track');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('bg-white', 'scale-110');
+                    dot.classList.remove('bg-white/50');
+                } else {
+                    dot.classList.add('bg-white/50');
+                    dot.classList.remove('bg-white', 'scale-110');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+
+        // Scroll functionality
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', () => {
+            const scrollButton = document.getElementById('scroll-to-top');
+            if (window.scrollY > 400) {
+                scrollButton.classList.add('show');
+            } else {
+                scrollButton.classList.remove('show');
+            }
+        });
+
+        // Animate elements on scroll
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation(); // Run on load
+
+        // Populate services
+        function populateServices() {
+            const servicesGrid = document.getElementById('services-grid');
+            servicesGrid.innerHTML = '';
+            
+            services.forEach((service, index) => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'animate-on-scroll';
+                serviceCard.style.animationDelay = `${index * 0.1}s`;
+                
+                serviceCard.innerHTML = `
+                    <div class="group hover:shadow-card transition-all duration-300 hover:-translate-y-1 bg-gradient-card border border-border/50 rounded-lg">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                                    ${service.title}
+                                </h3>
+                                <span class="text-lg font-bold text-primary">${service.price}</span>
+                            </div>
+                            <p class="text-muted-foreground text-sm leading-relaxed mb-2">
+                                ${service.description}
+                            </p>
+                            <p class="text-xs text-muted-foreground font-medium">
+                                Duration: ${service.duration}
+                            </p>
+                        </div>
+                    </div>
+                `;
+                
+                servicesGrid.appendChild(serviceCard);
+            });
+        }
+
+        // Booking form functionality
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const service = formData.get('service');
+            const date = formData.get('date');
+            const time = formData.get('time');
+            
+            if (!name || !phone || !service || !date || !time) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            const dateObj = new Date(date);
+            const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            const message = `Hello! I'd like to book an appointment:
+            
+👤 Name: ${name}
+📱 Phone: ${phone}
+💅 Service: ${service}
+📅 Date: ${formattedDate}
+⏰ Time: ${time}
+
+Thank you!`;
+            
+            const whatsappUrl = `https://wa.me/919007195231?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            populateServices();
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>
